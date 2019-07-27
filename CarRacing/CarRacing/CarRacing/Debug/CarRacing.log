@@ -1,3 +1,1 @@
-﻿  Race.cpp
-C:\Users\김준호\Desktop\김준호\CPP\CarRacing\CarRacing\CarRacing\Race.cpp(28): warning C4091: 'typedef ': 변수를 선언하지 않으면 'Car' 왼쪽은 무시됩니다.
-  CarRacing.vcxproj -> C:\Users\김준호\Desktop\김준호\CPP\CarRacing\CarRacing\Debug\CarRacing.exe
+﻿  CarRacing.vcxproj -> C:\Users\김준호\Desktop\김준호\CPP\Cpp\CarRacing\CarRacing\Debug\CarRacing.exe

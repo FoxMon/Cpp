@@ -3,76 +3,65 @@
 using std::cout;
 using std::endl;
 
-namespace CAR_CONST // enum 네임공간
-{
-	enum
-	{
-		ID_LEN			 = 20, // ID길이
-		MAX_SPD		 = 200, // 최대 Speed
-		FUEL_STEP	 = 2, // 연료깎이는 값
-		ACC_STEP	 = 10, // Speed 증가값
-		BRK_STEP	 = 10 // Speed 감소값
+namespace CAR_CONST {
+	enum {
+		ID_LEN = 20,
+		MAX_SPD = 200,
+		FUEL_STEP = 2,
+		ACC_STEP = 10,
+		BRK_STEP = 10
 	};
 }
 
-typedef struct Car
-{
-	char userID[CAR_CONST::ID_LEN]; // UserID
-	int fuelGauge; // 연료량
-	int curSpeed; // 현재속도
+struct Car {
+	char gameID[CAR_CONST::ID_LEN];
+	int fuelGauge;
+	int curSpeed;
 
-	/*구조체 안에 함수*/
-	void ShowCarState();
+	void Show_CarState();
 	void Accel();
 	void Break();
 };
 
-void Car::ShowCarState() // 계기판
-{
-	cout << "소유자 ID : " << userID << endl;
-	cout << "연료량 : " << fuelGauge << "%" << endl;
-	cout << "현재속도 : " << curSpeed << "km/s" << endl << endl;
+void Car::Show_CarState() {
+	cout << "소유자ID: " << gameID << endl;
+	cout << "연료량: " << fuelGauge << "%" << endl;
+	cout << "현재속도: " << curSpeed << "km/s" << endl;
 }
 
-void Car::Accel() // 악셀
-{
-	if (fuelGauge <= 0) // 연료없으면 
-	{
-		return; // 종료
-	}
-	else
-	{
-		fuelGauge -= CAR_CONST::FUEL_STEP; // 악셀밟으면 깎임
+void Car::Accel() {
+	if (fuelGauge <= 0) {
+		return;
+	} else {
+		fuelGauge -= CAR_CONST::FUEL_STEP;
 	}
 
-	if ((curSpeed + CAR_CONST::ACC_STEP) >= CAR_CONST::MAX_SPD) // 최대속도 초과시
-	{
-		curSpeed = CAR_CONST::MAX_SPD; // 200넣고
-		return; // 종료
+	if ((curSpeed + CAR_CONST::ACC_STEP) >= CAR_CONST::MAX_SPD) {
+		curSpeed = CAR_CONST::MAX_SPD;
+
+		return;
 	}
 
-	curSpeed += CAR_CONST::ACC_STEP; // 현재속도 증가
+	curSpeed += CAR_CONST::ACC_STEP;
 }
 
-void Car::Break()
-{
-	if (curSpeed < CAR_CONST::BRK_STEP) // 현재속도가 브레이크값 보다 낮으면
-	{
-		curSpeed = 0; // 0넣고
-		return; // 종료
-	}
+void Car::Break() {
+	if (curSpeed < CAR_CONST::BRK_STEP) {
+		curSpeed = 0;
 
-	curSpeed -= CAR_CONST::BRK_STEP; // 현재속도 깎임
+		return;
+	} 
+
+	curSpeed -= CAR_CONST::BRK_STEP;
 }
 
-int main(void)
-{
-	Car run99 = { "run99", 100, 0 };
-	
-	run99.Accel();
-	run99.ShowCarState();
-	run99.Break();
-	run99.ShowCarState();
+int main(void) {
+	Car runFox99 = { "runFox99", 100, 0 };
+
+	runFox99.Accel();
+	runFox99.Show_CarState();
+	runFox99.Break();
+	runFox99.Show_CarState();
 
 	return 0;
 }
