@@ -1,18 +1,17 @@
 #ifndef __POINT_H_
 #define __POINT_H_
 
-class Point
-{
-private:
-	int x; // x좌표
-	int y; // y좌표
+class Point {
+private: // 임의로 초기화 불가능
+	int x;
+	int y;
 
 public:
-	bool InitMembers(int xpos, int ypos);
-	int GetX() const;
-	int GetY() const;
-	bool SetX(int xpos);
-	bool SetY(int ypos);
+	bool Init_Members(int xpos, int ypos);
+	int Get_X() const;
+	int Get_Y() const;
+	bool Set_X(int xpos);
+	bool Set_Y(int ypos);
 };
 
 #endif

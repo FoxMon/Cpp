@@ -1,17 +1,15 @@
 #ifndef __RECTANGLE_H_
-#define __RECTANGGLE_H_
+#define  __RECTANGLE_H_
 
 #include "Point.h"
 
-class Rectangle
-{
+class Rectangle {
 private:
 	Point upLeft;
 	Point lowRight;
 
 public:
-	bool InitMembers(const Point& ul, const Point& lr);
-	void ShowRecInfo() const;
+	bool Init_Members(const Point& ul, const Point& lr);
+	void Show_Rec_Info() const;
 };
-
 #endif

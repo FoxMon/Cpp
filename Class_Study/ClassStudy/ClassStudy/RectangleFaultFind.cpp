@@ -5,40 +5,34 @@
 using std::cout;
 using std::endl;
 
-int main(void)
-{
+int main(void) {
 	Point pos1;
 
-	if (!pos1.InitMembers(-2, 4))
-	{
+	if (!pos1.Init_Members(-2, 4)) {
 		cout << "초기화 실패" << endl;
 	}
 
-	if (!pos1.InitMembers(2, 4))
-	{
+	if (!pos1.Init_Members(2, 4)) {
 		cout << "초기화 실패" << endl;
 	}
 
 	Point pos2;
 
-	if (!pos2.InitMembers(5, 9))
-	{
+	if (!pos2.Init_Members(5, 9)) {
 		cout << "초기화 실패" << endl;
 	}
 
 	Rectangle rec;
 
-	if (!rec.InitMembers(pos2, pos1))
-	{
+	if (!rec.Init_Members(pos2, pos1)) {
 		cout << "직사각형 초기화 실패" << endl;
 	}
 
-	if (!rec.InitMembers(pos1, pos2))
-	{
+	if (!rec.Init_Members(pos1, pos2)) {
 		cout << "직사각형 초기화 실패" << endl;
 	}
 
-	rec.ShowRecInfo();
+	rec.Show_Rec_Info();
 
 	return 0;
 }
