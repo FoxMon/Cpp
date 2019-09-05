@@ -1,1 +1,8 @@
-﻿  Subject01.vcxproj -> C:\Users\김준호\Desktop\김준호\CPP\Subject01\Debug\Subject01.exe
+﻿  Calculator.cpp
+C:\Users\김준호\Desktop\김준호\CPP\Cpp\Subject01\Subject01\Calculator.cpp(37): warning C4305: '인수': 'int'에서 '_Elem'(으)로 잘립니다.
+          with
+          [
+              _Elem=char
+          ]
+C:\Users\김준호\Desktop\김준호\CPP\Cpp\Subject01\Subject01\Calculator.cpp(37): warning C4309: '인수': 상수 값이 잘립니다.
+  Subject01.vcxproj -> C:\Users\김준호\Desktop\김준호\CPP\Cpp\Subject01\Debug\Subject01.exe

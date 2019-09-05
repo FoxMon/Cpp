@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <cstdlib>
 
 using std::endl;
 using std::cout;
