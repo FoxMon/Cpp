@@ -1,0 +1,4 @@
+﻿  OOPproject06.cpp
+C:\Users\김준호\Desktop\김준호\CPP\Cpp\OOPproject06\OOPproject06\OOPproject06.cpp(94): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\김준호\Desktop\김준호\CPP\Cpp\OOPproject06\OOPproject06\OOPproject06.cpp(305): warning C4102: 'defalut': 참조되지 않은 레이블입니다.
+  OOPproject06.vcxproj -> C:\Users\김준호\Desktop\김준호\CPP\Cpp\OOPproject06\Debug\OOPproject06.exe
