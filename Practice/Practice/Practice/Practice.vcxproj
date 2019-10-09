@@ -123,10 +123,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="SimpleFunc.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="SimpleFunc.cpp" />
     <ClCompile Include="SimpleMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
