@@ -1,44 +1,107 @@
 #include <iostream>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
 
-using std::cout;
+using std::ifstream;
+using std::string;
+using std::vector;
 using std::cin;
+using std::cout;
 using std::endl;
 
-void get1() {
-	cout << "cin.get()로 <Enter> 키까지 입력 받고 출력합니다.>> ";
+void fileRead(vector<string>& wordVector, ifstream& fin) {
+	string word;
 
-	int ch;
-
-	while ((ch = cin.get()) != EOF) {
-		cout.put(ch);
-
-		if (ch == '\n') {
-			break;
-		}
+	while (getline(fin, word)) {
+		wordVector.push_back(word);
 	}
 }
 
-void get2() {
-	cout << "cin.get(char&)로 <Enter> 키까지 입력 받고 출력합니다.>> ";
+string randomWord(vector<string>& wordVector) {
+	int random;
 
-	char ch;
+	srand((unsigned)time(NULL));
+	random = rand() % 25143;
+	
+	return wordVector[random];
+}
+
+void checkWord(string word) {
+	int ranIdx1;
+	int ranIdx2;
+	int count = 0;
+	char answer;
+	string temp = word;
+
+	srand((unsigned)time(NULL));
+	ranIdx1 = rand() % word.length();
+	word[ranIdx1] = '-';
+	ranIdx2 = rand() % word.length();
+	word[ranIdx2] = '-';
 
 	while (true) {
-		cin.get(ch);
+		for (int i = 0; i < word.length(); i++) {
+			cout << word[i];
+		}
+		cout << endl;
 
-		if (cin.eof()) {
+		cout << ">>";
+		cin >> answer;
+
+		if (answer == temp[ranIdx1]) {
+			word[ranIdx1] = answer;
+			ranIdx1 = ranIdx2; // 중복 방지
+		} 
+		else if (answer == temp[ranIdx2]) {
+			word[ranIdx2] = answer;
+			ranIdx2 = ranIdx1; // 중복 방지
+		}
+		else {
+			count++;
+		}
+
+		if (count == 5) {
+			cout << "Fail..." << endl;
+			cout << temp << endl;
 			break;
 		}
 
-		cout.put(ch);
+		if (word == temp) {
+			cout << word << endl;
 
-		if (ch == '\n') {
 			break;
 		}
 	}
 }
 
 int main(void) {
-	get1();
-	get2();
+	vector<string> wordVector;
+	ifstream fin("C:\\Users\\김준호\\Desktop\\words.txt");
+	string ranStr;
+	string next;
+
+	if (!fin) {
+		cout << "File open error...";
+
+		return 0;
+	}
+
+	fileRead(wordVector, fin);
+
+	cout << "Game Start..!!!" << endl << endl;
+
+	while (true) {
+		ranStr = randomWord(wordVector);
+		cout << ranStr << endl << endl;
+		checkWord(ranStr);
+		cout << "Next(y/n)?";
+		cin >> next;
+
+		if (next == "n") {
+			break;
+		}
+	}
 }
