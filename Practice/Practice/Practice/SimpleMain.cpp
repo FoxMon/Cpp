@@ -1,107 +1,57 @@
 #include <iostream>
-#include <vector>
-#include <fstream>
 #include <string>
-#include <cstdlib>
-#include <ctime>
 
-using std::ifstream;
-using std::string;
-using std::vector;
-using std::cin;
 using std::cout;
+using std::cin;
 using std::endl;
+using std::string;
+using std::ostream;
+using std::istream;
 
-void fileRead(vector<string>& wordVector, ifstream& fin) {
-	string word;
+class Phone {
+private:
+	string name;
+	string telnum;
+	string address;
 
-	while (getline(fin, word)) {
-		wordVector.push_back(word);
+public:
+	Phone(string name = "", string telnum = "", string address = "") {
+		this->name = name;
+		this->telnum = telnum;
+		this->address = address;
 	}
+
+	friend ostream& operator << (ostream& outs, Phone op);
+	friend istream& operator >> (istream& ins, Phone& op);
+};
+
+ostream& operator << (ostream& outs, Phone op) {
+	cout << "이름 : ";
+	cout << op.name << endl;
+	cout << "전화번호 : ";
+	cout << op.telnum << endl;
+	cout << "주소 : ";
+	cout << op.address << endl;
+
+	return outs;
 }
 
-string randomWord(vector<string>& wordVector) {
-	int random;
+istream& operator >> (istream& ins, Phone& op) {
+	string name, telnum, address;
 
-	srand((unsigned)time(NULL));
-	random = rand() % 25143;
-	
-	return wordVector[random];
-}
+	cout << "이름 : ";
+	getline(ins, op.name);
+	cout << "전화번호 : ";
+	getline(ins, op.telnum);
+	cout << "주소 : ";
+	getline(ins, op.address);
 
-void checkWord(string word) {
-	int ranIdx1;
-	int ranIdx2;
-	int count = 0;
-	char answer;
-	string temp = word;
-
-	srand((unsigned)time(NULL));
-	ranIdx1 = rand() % word.length();
-	word[ranIdx1] = '-';
-	ranIdx2 = rand() % word.length();
-	word[ranIdx2] = '-';
-
-	while (true) {
-		for (int i = 0; i < word.length(); i++) {
-			cout << word[i];
-		}
-		cout << endl;
-
-		cout << ">>";
-		cin >> answer;
-
-		if (answer == temp[ranIdx1]) {
-			word[ranIdx1] = answer;
-			ranIdx1 = ranIdx2; // 중복 방지
-		} 
-		else if (answer == temp[ranIdx2]) {
-			word[ranIdx2] = answer;
-			ranIdx2 = ranIdx1; // 중복 방지
-		}
-		else {
-			count++;
-		}
-
-		if (count == 5) {
-			cout << "Fail..." << endl;
-			cout << temp << endl;
-			break;
-		}
-
-		if (word == temp) {
-			cout << word << endl;
-
-			break;
-		}
-	}
+	return ins;
 }
 
 int main(void) {
-	vector<string> wordVector;
-	ifstream fin("C:\\Users\\김준호\\Desktop\\words.txt");
-	string ranStr;
-	string next;
+	Phone girl, boy;
 
-	if (!fin) {
-		cout << "File open error...";
-
-		return 0;
-	}
-
-	fileRead(wordVector, fin);
-
-	cout << "Game Start..!!!" << endl << endl;
-
-	while (true) {
-		ranStr = randomWord(wordVector);
-		cout << ranStr << endl << endl;
-		checkWord(ranStr);
-		cout << "Next(y/n)?";
-		cin >> next;
-
-		if (next == "n") {
-			break;
-		}
-	}
+	cin >> girl >> boy;
+	cout << girl << endl << boy << endl;
 }
